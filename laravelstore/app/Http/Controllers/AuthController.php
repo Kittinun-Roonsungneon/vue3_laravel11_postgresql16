@@ -8,6 +8,64 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    // Register
+    /**
+     * @OA\Post(
+     *     path="/api/register",
+     *     tags={"Auth"},
+     *     summary="Registrate",
+     *     operationId="Register",
+     *
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     *     @OA\RequestBody(
+     *         description="Input data format",
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="fullname",
+     *                     description="Enter your fullname",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="username",
+     *                     description="Enter your username",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     description="Enter your Email",
+     *                     type="email"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     description="Enter your password",
+     *                     type="password"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password_confirmation",
+     *                     description="Enter your password confirmation",
+     *                     type="password"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="tel",
+     *                     description="Enter your tel",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="role",
+     *                     description="Enter your role",
+     *                     type="string"
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
     // Register User
     public function register(Request $request){
 
@@ -39,7 +97,38 @@ class AuthController extends Controller
 
         return response($response, 201);
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     tags={"Auth"},
+     *     summary="Authentificate",
+     *     operationId="Login",
+     *
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     *     @OA\RequestBody(
+     *         description="Input data format",
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="email",
+     *                     description="Enter your email",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     description="Enter password",
+     *                     type="password"
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
     // Login User
     public function login(Request $request) {
 
